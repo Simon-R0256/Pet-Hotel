@@ -1,0 +1,185 @@
+@media (max-width: 800px) {
+
+    html{
+        font-size: 14px;
+    }
+
+    .imagePost{
+        flex-wrap: wrap;
+        max-width: 90vw !important;
+    }
+
+}
+
+
+/*ImagePost Component*/
+.imagePost{
+    max-width: calc(800px + 14vw);
+    margin: 0 10px;
+    background-image: radial-gradient( 
+        circle farthest-corner at 10% 20%,  rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% );
+    border-radius: 10px;
+    padding: 1rem;
+    align-items: start !important;
+    flex: 1 1 0px;
+    gap: 1rem;
+}
+
+/*Image Component*/
+.pictureWrapper{
+    width: 100%;
+}
+
+.picture{
+    width: 100%;
+    border-radius: 25px;
+    border: #d6d9db 3px solid;
+}
+
+/*Note Component*/
+.note{
+    width: 100%;
+    color: #d6d9db;
+}
+
+.noteHead{
+    justify-content: space-between !important;
+    align-items: start !important;
+}
+
+.noteImage{
+    width: 25%;
+    background-color: #d6d9db;
+    border-radius: 100%;
+}
+
+.noteContentArea{
+    width: 70%;
+    align-items: start !important;
+    margin: auto 0;
+}
+
+.noteCreatorLabel{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.noteContent{
+    width: 100%;
+    border-top: #d6d9db 1px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    padding-top:8px;
+}
+
+.noteFooter{
+    justify-content: space-evenly !important;
+    padding: 0.1rem 0.7rem;
+    border-bottom: #d6d9db 1px solid;
+}
+
+.expandComments{
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    padding: 4px 6px;
+}
+
+.expandComments:hover{
+    color: #5890b8;
+    cursor: pointer;
+    border: 1px solid #5890b8;
+}
+
+.voteButton{
+    font-size: 3rem;
+    margin: 0 0.6rem;
+    cursor: pointer;
+}
+
+.green, .voteGreen:hover {
+    color: #3ca93c;
+}
+
+.red, .voteRed:hover {
+    color: #c32222
+}
+
+.commentList{
+    gap: 1rem;
+    align-items: start !important;
+    padding: 5px;
+}
+
+.comment{
+    align-items: start !important;
+    gap: 3px;
+}
+
+.commentHead{
+   gap: 0.7rem;
+}
+
+.commentIcon{
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    font-size: 2rem;
+    float: left;
+    text-align: center;
+    background-color: #d6d9db;
+    color: black;
+    border-radius: 50%;
+    line-height: 2.5rem;
+}
+
+.commentName{
+    font-weight: 700;
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+}
+
+.commentText{
+    font-size: 1.3rem;
+}
+
+.createComment{
+    margin: 0.8rem 0;
+    justify-content: center !important;
+    height: 2.6rem;
+}
+
+.createComment input{
+    width: 80%;
+    height: 100%;
+    background-color: azure;
+    border: none;
+    font-size: 1.2rem;
+    padding: 2px 11% 2px 5px;
+    border-radius: 12px;
+    margin-left: 10%;
+}
+
+.createComment :focus{
+    outline: #427358 3px solid;
+}
+
+.createComment button{
+    width: 10%;
+    height: 100%;
+    position: relative;
+    right: 11%;
+    background: transparent;
+    font-size: 2.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.createComment button:hover{
+    color: #427358;
+}
+
+.createComment button:focus{
+    outline: none;
+}
+

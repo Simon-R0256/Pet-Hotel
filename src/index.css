@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+    user-select:none;
+}
+
+body{
+    margin: 0px;
+    background-image: radial-gradient( 
+        circle farthest-corner at 1.3% 2.8%,  rgba(239,249,249,1) 0%, rgba(182,199,226,1) 100.2% );
+    text-rendering: optimizeLegibility;
+
+}
+
+.pageHeader{
+    background-color: #24303d;
+    padding: 0.5rem 2rem;
+    justify-content: space-between !important;
+    border-bottom: 5px #427358 ridge;
+    border-top: 5px #427358 ridge;
+}
+
+.pageLogo{
+    max-width: calc(70px + 5vw);
+    border: 3px #427358 ridge;
+    border-radius: 50%;
+}
+
+.dogLogo{
+    max-width: calc(70px + 5vw);
+}
+
+@media (max-width:800px){
+    .navBar{
+        flex-wrap: wrap;
+    }
+    .navBar{
+        gap: 15px !important;
+    }
+
+    .navItem{
+        min-width: 80%;
+    }
+
+    .pageLogo{
+        max-width: 25% !important;
+    }
+
+    .dogLogo{
+        display: none;
+    }
+}
+
+.navBar{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1 1 0px;
+    gap: 20px;
+    margin: 0 10px;
+}
+
+.navItem{
+    width: calc(100px + 15%);
+    text-align: center;
+    font-family: Helvetica;
+    list-style: none;
+    font-size: calc(10px + 2vw);
+    font-weight: 600;
+    background-color: #d6d9db;
+    border-radius: 20px;
+    white-space: nowrap;
+    padding: 0.5rem 3px;
+    transition:transform ease 0.5s;
+    cursor: pointer;
+}
+
+.navItem:not(.active):hover{
+    transform: translateY(-7px);
+    outline: #427358 3px solid;
+    outline-offset: 5px;
+    color: #427358;
+}
+
+.active {
+    outline: #427358 3px solid;
+    outline-offset: 5px;
+    color: #427358;
+}
+
+.flexRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.flexCol{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.visible{
+    display: flex;
+}
+
+.hidden{
+    display: none;
+}
+
+input:focus{
+    outline: none;
+}
