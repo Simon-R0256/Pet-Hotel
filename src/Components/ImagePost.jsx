@@ -43,9 +43,7 @@ export default function ImagePost({postData}){
 
 function Picture({content}){
     return (
-        <div className="pictureWrapper">
-            <img className="picture" src={content} alt="Animal" />
-        </div>
+        <img className="picture" src={content} alt="Animal" />
     )
 }
 
