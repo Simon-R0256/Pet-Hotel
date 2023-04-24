@@ -18,13 +18,13 @@ function postsReducer(posts,action){
     //Different Dispatch tasks
     switch (action.type) {
         case "create_comment": {
-            const newPost = nextPosts.find(post => post.id === action.id);
-            newPost.comments.push({name:"Guest",text:action.text});
-            nextPosts.map(post => post.id === action.id ? newPost : post);
+            const PostRef = nextPosts.find(post => post.id === action.id).comments;
+            PostRef.unshift({name:"Guest",text:action.text});
             break;
         }
         case "interaction": {
-            nextPosts.find(post => post.id === action.id).interaction = action.emotion;
+            const PostRef = nextPosts.find(post => post.id === action.id);
+            PostRef.interaction = PostRef.interaction === action.emotion ? "none" : action.emotion;
             break;
         }
         default : {
