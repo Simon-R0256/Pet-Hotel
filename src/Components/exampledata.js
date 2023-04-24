@@ -12,6 +12,7 @@ const data = [
     {
         id: "1",
         username: "animaldude17",
+        interaction: "none",
         picture: avatar01,
         content: animal01,
         info: "My dog is soo cute :) !", 
@@ -24,6 +25,7 @@ const data = [
     {
         id: "2",
         username: "kittyGirl",
+        interaction: "none",
         picture: avatar02,
         content: animal02,
         info: "Minka loves playing in the garden, especially when the weather is nice",
@@ -34,6 +36,7 @@ const data = [
     {
         id: "3",
         username: "budgieEnjoyer",
+        interaction: "none",
         picture: avatar03,
         content: animal03,
         info: "Cookie is not feeling well today, but im sure his favourite snack will cheer him up",
@@ -45,6 +48,7 @@ const data = [
     {
         id: "4",
         username: "bunnyfriend",
+        interaction: "none",
         picture: avatar04,
         content: animal04,
         info: "I moved his enclosure outside",

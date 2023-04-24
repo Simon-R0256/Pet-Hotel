@@ -1,19 +1,25 @@
-import "./imagepost.css";
+import "./petfeed.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useState} from "react";
+import { usePost, usePostDispatch} from "./PostProvider";
 
-import { useState } from "react";
 
-export default function ImagePost({postData}){
+export default function PetFeedPage({isVisible}){
+    const posts = usePost();
+    
+    return(
+        <div className="flexRow" style={{margin:"20px 0"}}>
+            <div className="flexCol" style={{gap:"20px"}}>
+            {posts.map(post => 
+                <ImagePost key={post.id} postData={post} /> 
+            )}
+            </div>
+        </div> 
+    )
+}
+
+function ImagePost({postData}){
     const [hideComments, setHideComments] = useState(true);
-    const [comments,setComments] = useState(postData.comments);
-
-    function handleCreateComment(text){
-        if(text.length < 3) return;
-        setComments([
-                {name: "Guest", text:text},
-                ...comments
-        ])
-    }
 
     function handleCommentVisibility(){
         setHideComments(!hideComments);
@@ -23,17 +29,14 @@ export default function ImagePost({postData}){
         <div className="flexRow imagePost">
             <Picture content={postData.content}/>
             <PostInfo 
-                username={postData.username} 
-                picture={postData.picture} 
-                info={postData.info}
-                commentCount={comments.length}
+                postData={postData}
                 toggleComments={handleCommentVisibility}
                 commentsVisibility={hideComments}
             >
                 <CommentSection
-                    comments={comments}
+                    postId={postData.id}
+                    comments={postData.comments}
                     commentsVisibility={hideComments}
-                    createComment={handleCreateComment}
                 />
             </PostInfo>
             
@@ -47,33 +50,37 @@ function Picture({content}){
     )
 }
 
-function PostInfo({username,picture,info,commentCount,commentsVisibility,toggleComments,children}){
-    const [interaction, setInteraction] = useState("none");
+function PostInfo({postData,commentsVisibility,toggleComments,children}){
+    const dispatch = usePostDispatch();
 
     function handleInteraction(emotion){
-        interaction === emotion ? setInteraction("none") : setInteraction(emotion);
+        dispatch({
+            type: "interaction",
+            id: postData.id,
+            emotion: emotion
+        })
     }
 
     return(
         <div className="flexcol note">
             <div className="flexRow noteHead">
-                <img className="noteImage" src={picture} alt="Avatar"/>
+                <img className="noteImage" src={postData.picture} alt="Avatar"/>
                 <section className="noteContentArea flexCol">
-                    <label className="noteCreatorLabel"> {username} </label>
-                    <article className="noteContent"> {info} </article>
+                    <label className="noteCreatorLabel"> {postData.username} </label>
+                    <article className="noteContent"> {postData.info} </article>
                 </section>
             </div>
             <div className="flexRow noteFooter">
                 <div className="expandComments" onClick={toggleComments}>
-                    Comments ({commentCount}){" "} 
+                    Comments ({postData.comments.length}){" "} 
                     <i className={"bi bi-caret-"+(!commentsVisibility ? "up" : "down")}></i>
                 </div>
                 <div className="flexRow">
                     <div className="voteButton" onClick={() => handleInteraction("like")}>
-                        <i className={"voteGreen bi bi-arrow-up-circle "+(interaction === "like" && "green")}></i>
+                        <i className={"voteGreen bi bi-arrow-up-circle "+(postData.interaction === "like" && "green")}></i>
                     </div>
                     <div className="voteButton" onClick={() => handleInteraction("dislike")}>
-                        <i className={"voteRed bi bi-arrow-down-circle "+(interaction === "dislike" && "red")}></i>
+                        <i className={"voteRed bi bi-arrow-down-circle "+(postData.interaction === "dislike" && "red")}></i>
                     </div>
                 </div>
             </div>
@@ -82,8 +89,9 @@ function PostInfo({username,picture,info,commentCount,commentsVisibility,toggleC
     )
 }
 
-function CommentSection({comments,commentsVisibility,createComment}){
+function CommentSection({postId,comments,commentsVisibility}){
     const [commentText, setCommentText] = useState("");
+    const dispatch = usePostDispatch();
     
     return(
         <>
@@ -93,7 +101,10 @@ function CommentSection({comments,commentsVisibility,createComment}){
                     onChange={(event) => setCommentText(event.target.value)}
                     placeholder="Write a comment ..."
                 />
-                <button onClick={() => {createComment(commentText);setCommentText("")} }>
+                <button onClick={() => {
+                    dispatch({type:"create_comment", text:commentText, id:postId});
+                    setCommentText("")} 
+                    }>
                     <i className="bi bi-chat-left-text"></i>
                 </button>
         </div>
