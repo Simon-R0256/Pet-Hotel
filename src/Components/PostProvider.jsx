@@ -1,4 +1,3 @@
-/* eslint-disable no-fallthrough */
 import { createContext, useContext, useReducer } from "react";
 import data from "./exampledata";
 
