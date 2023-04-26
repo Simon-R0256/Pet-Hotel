@@ -30,27 +30,6 @@ body{
     max-width: calc(70px + 5vw);
 }
 
-@media (max-width:800px){
-    .navBar{
-        flex-wrap: wrap;
-    }
-    .navBar{
-        gap: 15px !important;
-    }
-
-    .navItem{
-        min-width: 80%;
-    }
-
-    .pageLogo{
-        max-width: 25% !important;
-    }
-
-    .dogLogo{
-        display: none;
-    }
-}
-
 .navBar{
     display: flex;
     justify-content: center;
@@ -112,4 +91,27 @@ body{
 
 input:focus{
     outline: none;
+}
+
+
+
+@media (max-width:800px){
+    .navBar{
+        flex-wrap: wrap;
+    }
+    .navBar{
+        gap: 15px;
+    }
+
+    .navItem{
+        min-width: 80%;
+    }
+
+    .pageLogo{
+        max-width: 25%;
+    }
+
+    .dogLogo{
+        display: none;
+    }
 }

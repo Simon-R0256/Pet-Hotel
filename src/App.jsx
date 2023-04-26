@@ -1,10 +1,11 @@
 import PetFeedPage from "./Components/PetFeed";
 import AboutUsPage from "./Components/AboutUs";
+import CreatePost from "./Components/CreatePost"
+import { PostProvider } from "./Components/PostProvider";
 
 import logo from "./Components/pic/logo.png"
 import doglogo from "./Components/pic/dog_logo.svg"
 import { useState } from "react";
-import { PostProvider } from "./Components/PostProvider";
 
 export default function App(){
     const [routes,setRoutes] = useState([true,false,false]);
@@ -28,17 +29,18 @@ export default function App(){
                 <li onClick={() => handleRoute(1)} className={"navItem " + (routes[1] && "active")}>
                     Pet-Feed <i className="bi bi-card-image"></i>
                 </li>
-                <li className="navItem">
-                    Placeholder
+                <li onClick={() => handleRoute(2)} className={"navItem " + (routes[2] && "active")}>
+                    Create <i className="bi bi-pencil-square"></i>
                 </li>
             </div>
             <img src={doglogo} className="dogLogo" alt="Dog Logo" />
         </div>
 
-        {/* Seperate routed Pages, uses the PostProvider*/}
+        {/* Seperate routed Pages, every Page can use the PostProvider*/}
         <PostProvider>
             {routes[0] && <AboutUsPage/>}
             {routes[1] && <PetFeedPage/>}
+            {routes[2] && <CreatePost/>}
         </PostProvider>
         </>
     )
