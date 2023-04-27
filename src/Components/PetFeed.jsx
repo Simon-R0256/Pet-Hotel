@@ -4,7 +4,7 @@ import { useState} from "react";
 import { usePost, usePostDispatch} from "./PostProvider";
 
 
-export default function PetFeedPage({isVisible}){
+export default function PetFeedPage(){
     const posts = usePost();
     
     return(
@@ -18,11 +18,13 @@ export default function PetFeedPage({isVisible}){
     )
 }
 
-function ImagePost({postData}){
+export function ImagePost({postData}){
     const [hideComments, setHideComments] = useState(true);
 
     function handleCommentVisibility(){
-        setHideComments(!hideComments);
+        if(postData.comments.length > 0){
+            setHideComments(!hideComments);
+        }
     }
 
     return(  
@@ -46,7 +48,7 @@ function ImagePost({postData}){
 
 function Picture({content}){
     return (
-        <img className="picture" src={content} alt="Animal" />
+        <img className="picture" src={content} alt="Here will be your Pet" />
     )
 }
 

@@ -15,7 +15,7 @@ const data = [
         interaction: "none",
         picture: avatar01,
         content: animal01,
-        info: "My dog is soo cute :) !", 
+        info: "My dog is really cute :) !", 
         comments: [
             {name: "tess13", text: "He really is a good boy"},
             {name: "cakefriend", text: "Can you tell me what Breed he is? I always wanted one of these"},

@@ -13,21 +13,31 @@ function postsReducer(posts,action){
             comments: post.comments.map(comment => {return {...comment}})
         })
     })
-
+    
+    //creates a Ref to the post if it has an Id
+    let PostRef;
+    if(action.hasOwnProperty("id")){
+        PostRef = nextPosts.find(post => post.id === action.id);
+        if(PostRef === undefined){
+            console.error("ID not found " + action.id);
+            return posts;
+        } 
+    }
+        
     //Different Dispatch tasks
     switch (action.type) {
         case "create_comment": {
-            const PostRef = nextPosts.find(post => post.id === action.id).comments;
-            PostRef.unshift({name:"Guest",text:action.text});
+            if(action.text.length > 0){
+                PostRef.comments.unshift({name:"Guest",text:action.text});
+            }
             break;
         }
         case "interaction": {
-            const PostRef = nextPosts.find(post => post.id === action.id);
             PostRef.interaction = PostRef.interaction === action.emotion ? "none" : action.emotion;
             break;
         }
         default : {
-            throw Error("Unknown Action type "+action.type)
+            throw Error("Unknown Action type "+action.type);
         }  
     }
 
