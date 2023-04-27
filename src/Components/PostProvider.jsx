@@ -32,8 +32,22 @@ function postsReducer(posts,action){
             }
             break;
         }
-        case "interaction": {
+        case "interaction" : {
             PostRef.interaction = PostRef.interaction === action.emotion ? "none" : action.emotion;
+            break;
+        }
+        case "create_post" : {
+            const createdPost = {
+                id: action.nextid,
+                username: action.username,
+                interaction: "none",
+                picture: action.picture,
+                content: action.content,
+                info: action.info,
+                comments: []
+            }
+
+            nextPosts.unshift(createdPost);
             break;
         }
         default : {

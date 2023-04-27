@@ -1,24 +1,48 @@
 import { ImagePost } from "./PetFeed";
-import avatar from "./pic/guest.png";
-import { useState, useEffect } from "react";
+import guestAvatar from "./pic/guest.png";
+import loading from "./pic/loading.gif";
+import { useState, useRef} from "react";
+import {usePost, usePostDispatch} from "./PostProvider"
 import "./createpost.css";
 
-const post = {
-    id: "420",
-    username: "Guest",
-    interaction: "none",
-    picture: avatar,
-    content: "",
-    info: "",
-    comments: []
-};
 
-export default function CreatePost(){
+export default function CreatePost({handleRoute}){
     const [link,setLink] = useState("");
     const [info,setInfo] = useState("");
+    const [imageState,setImageState] = useState(false);
+    
+    const dispatch = usePostDispatch();
+    const posts = usePost();
 
-    post.content = link;
-    post.info = info;
+    const modal = useRef(null);
+    const testImage = useRef(null);
+
+
+    function handleCreatePost(){
+        if(!imageState){
+            alert("Error: The Link doesnt resolve to an Image");
+            return;
+        }
+
+        if(info.length === 0){
+            alert("Error: Please Enter a Description");
+            return;
+        }
+
+        dispatch({
+            type: "create_post",
+            nextid: posts.length+1,
+            username: "Guest",
+            picture: guestAvatar,
+            content: link,
+            info: info,
+        })
+
+        setTimeout(() => {
+            handleRoute(1);
+        },2500)
+        modal.current.style.display = "block";
+    }
     
     return(
         <div className="flexCol createPage">
@@ -27,6 +51,7 @@ export default function CreatePost(){
                     <h1>Create a Post <i className="bi bi-journal-richtext"></i></h1>
                 </div>
                 <hr></hr>
+                <div></div>
                 <input 
                     value={link} 
                     className="linkInput" 
@@ -39,11 +64,46 @@ export default function CreatePost(){
                     placeholder="Description"
                     onChange={(event) => {setInfo(event.target.value)}}                   
                 />
-                <button className="postButton">Submit Post <i className="bi bi-pin-angle"></i></button>
+                <button onClick={handleCreatePost} className="postButton">
+                    Submit Post <i className="bi bi-pin-angle"></i>
+                </button>
+
+                {/*Hidden Image to Test if Link resolves to an Image */}
+                <img 
+                    ref={testImage} 
+                    onLoad={() => setImageState(true)} 
+                    onError={() => setImageState(false)} 
+                    src={link} 
+                    alt="" 
+                    style={{display:"none"}}
+                />
+
+                <div ref={modal} className="modal"> 
+                    <div className="modalBody">
+                        <div>
+                            Post Created Successfully
+                            <i className="bi bi-check2-circle"></i>
+                        </div>
+                        <div>
+                            Redirects...
+                        </div>
+                        <div>
+                            <img src={loading} alt="Loading" />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="postWrapper">
                 <h1 style={{marginBottom:"10px"}}>Preview <i className="bi bi-zoom-in"></i></h1>
-                <ImagePost postData={post}/>
+                <ImagePost postData={{
+                    id: null,
+                    username: "Guest",
+                    picture: guestAvatar,
+                    content: link,
+                    info: info,
+                    interaction: "none",
+                    comments: [],
+                }}/>
             </div>
         </div>
     )

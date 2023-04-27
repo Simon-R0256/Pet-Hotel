@@ -87,7 +87,48 @@
     background-color: #e4f1e8;
 }
 
+.modal{
+    display: none;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #0000009e;
+}
 
+.modalBody{
+    background-color: azure;
+    min-width: 250px;
+    width: 45%;
+    height: 25%;
+    border:#427358 2px solid;
+    border-radius: 10px;
+    padding: 30px 15px;
+    font-size: calc(12px + 1.5vw);
+    text-align: center;
+    animation-name: slideTop;
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideTop {
+    from {margin: 0vh auto; opacity: 0.3;}
+    to {margin: 30vh auto; opacity: 1;}
+}
+
+.modalBody div{
+    height: 33%;
+}
+
+.modalBody .bi{
+    color: #427358;
+    margin-left: 10px;
+}
+
+.modalBody img{
+    height: 100%;
+}
 
 /*Media Queries */
 @media (max-width:800px){

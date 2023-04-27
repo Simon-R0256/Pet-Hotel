@@ -19,7 +19,7 @@ export default function PetFeedPage(){
 }
 
 export function ImagePost({postData}){
-    const [hideComments, setHideComments] = useState(true);
+    const [hideComments, setHideComments] = useState(false);
 
     function handleCommentVisibility(){
         if(postData.comments.length > 0){
@@ -75,7 +75,7 @@ function PostInfo({postData,commentsVisibility,toggleComments,children}){
             <div className="flexRow noteFooter">
                 <div className="expandComments" onClick={toggleComments}>
                     Comments ({postData.comments.length}){" "} 
-                    <i className={"bi bi-caret-"+(!commentsVisibility ? "up" : "down")}></i>
+                    <i className={"bi bi-caret-"+(commentsVisibility ? "up" : "down")}></i>
                 </div>
                 <div className="flexRow">
                     <div className="voteButton" onClick={() => handleInteraction("like")}>
@@ -110,7 +110,7 @@ function CommentSection({postId,comments,commentsVisibility}){
                     <i className="bi bi-chat-left-text"></i>
                 </button>
         </div>
-        <div className={"flexCol commentList "+(commentsVisibility ? "hidden" : "visible")}>
+        <div className={"flexCol commentList "+(!commentsVisibility ? "hidden" : "visible")}>
             {comments.map((com,index) => <Comment key={index} name={com.name} text={com.text}/>)}
         </div>
         </>

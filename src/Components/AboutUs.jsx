@@ -34,6 +34,8 @@ export default function AboutUs(){
                         On PetHotel you can share Pictures of your Animals and interact with other users.
                         <br></br><br></br>
                         The PetFeed lists all new posts.
+                        <br></br><br />
+                        In the Create Section you can submit your own Pictures.
                     </p>
                 </div>
                 <div className="contentBox lineChart">

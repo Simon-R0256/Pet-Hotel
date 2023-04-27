@@ -40,7 +40,7 @@ export default function App(){
         <PostProvider>
             {routes[0] && <AboutUsPage/>}
             {routes[1] && <PetFeedPage/>}
-            {routes[2] && <CreatePost/>}
+            {routes[2] && <CreatePost handleRoute={handleRoute}/>}
         </PostProvider>
         </>
     )
