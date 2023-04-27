@@ -35,7 +35,7 @@ export default function AboutUs(){
                         <br></br><br></br>
                         The PetFeed lists all new posts.
                         <br></br><br />
-                        In the Create Section you can submit your own Pictures.
+                        In the Create-Section you can submit your own pictures or generate random posts.
                     </p>
                 </div>
                 <div className="contentBox lineChart">

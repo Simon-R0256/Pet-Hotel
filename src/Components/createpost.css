@@ -34,22 +34,33 @@
     padding: 3px 8px;
 }
 
+.buttonWrapper{
+    width: 100%;
+}
+
 .postButton{
     width: 40%;
     height: 50px;
-    background-color: #427358;
     border-radius: 15px;
     color: azure;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px #427358 solid;
+    border: transparent;
+}
+
+.postButton[color="green"] {
+    background-color: #427358;
+}
+
+.postButton[color="yellow"] {
+    background-color: #898b1d;
 }
 
 .postButton:hover{
     transform: scale(103%);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    border-color: black;
+    border: black 1px solid;
 }
 
 .postButton:active{
@@ -75,4 +86,14 @@
     width: 80%;
     margin: 0;
     margin-bottom: 5px;
+}
+
+.toolTip{
+    font-size: 22px;
+    font-family: sans-serif;
+}
+
+.tippy-box{
+    background-color: #24303d !important;
+    border-radius: 12px !important;
 }
