@@ -90,7 +90,7 @@ export default function CreatePost({handleRoute}){
                     onChange={(event) => {setInfo(event.target.value)}}                   
                 />
                 <div className="flexRow buttonWrapper">
-                    <Tippy content={
+                    <Tippy hideOnClick="true" content={
                         <span className="toolTip">
                             Automatic generated Post containing a dog image and a fact
                         </span>}>
@@ -99,12 +99,12 @@ export default function CreatePost({handleRoute}){
                         </button>
                     </Tippy>
                     
-                    <Tippy content={
+                    <Tippy hideOnClick="true" content={
                         <span className="toolTip">
                             Submits your own post like shown in the preview
                         </span>}>
                         <button onClick={handleCreatePost} color="green" className="postButton">
-                            Submit Post <i className="bi bi-pin-angle"></i>
+                            Submit <i className="bi bi-pin-angle"></i>
                         </button>
                     </Tippy>
                 </div>

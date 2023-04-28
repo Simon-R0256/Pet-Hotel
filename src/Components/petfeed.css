@@ -84,7 +84,10 @@
     font-size: 3rem;
     margin: 0 0.6rem;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+}
+
+.voteButton:active, .voteButton:focus{
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 .green, .voteGreen:hover {
