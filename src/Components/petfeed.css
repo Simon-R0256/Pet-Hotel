@@ -81,14 +81,18 @@
     border: 1px solid #5890b8;
 }
 
+.expandComments:active{
+    -webkit-tap-highlight-color: transparent;
+}
+
 .voteButton{
     font-size: 3rem;
     margin: 0 0.6rem;
     cursor: pointer;
 }
 
-.voteButton:active, .voteButton:focus{
-    -webkit-tap-highlight-color: transparent !important;
+.voteButton:active{
+    -webkit-tap-highlight-color: transparent;
 }
 
 .green, .voteGreen:hover {
