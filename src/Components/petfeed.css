@@ -84,6 +84,7 @@
     font-size: 3rem;
     margin: 0 0.6rem;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .green, .voteGreen:hover {
