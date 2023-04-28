@@ -12,6 +12,10 @@ body{
 
 }
 
+input,textarea,button,select,a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .pageHeader{
     background-color: #24303d;
     padding: 0.5rem 2rem;
